@@ -1,0 +1,120 @@
+@use 'variables';
+
+@mixin desktop-view ($width,$heigth:unset, $font-size:unset,$bg-desktop:unset,$f-direction:unset,$text-aling:unset){
+    @media(min-width: 1440px){
+        width: $width;
+        height: $heigth;
+        font-size: $font-size;
+        @if $bg-desktop == true{
+            background-image: url(../images/bg-hero-desktop.svg);
+        }
+        @if $f-direction == true{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+        }
+        @if $text-aling == true{
+            text-align: initial;
+        }
+    }
+    
+}
+@mixin button($bg-color, $width, $heigth,$fontz:unset,$color:unset){
+    background-color: $bg-color;
+    border: none;
+    border-radius: 50px;
+    width: $width;
+    height: $heigth;
+    font-size: $fontz;
+    color: $color;
+}
+@mixin button-hover($bg-color){
+    &:hover{
+        cursor:pointer;
+        background-color: $bg-color;
+        color: variables.$white;
+    }
+
+}
+@mixin flex($f-direction:unset){
+    @media(min-width: 1440px){
+    @if $f-direction == true{
+        display: flex;
+        align-items: flex-start;        
+    }
+    }
+}
+
+@mixin section(){
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 180px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px variables.$Very-Pale-Cyan;
+    .image-container{
+        width: 246px;
+        margin-bottom: 38px;
+    }
+    .image-container__ilustration{
+        width: 100%;
+        margin-top: 40px;
+    }
+    .description{    
+        margin-bottom: 40px;                          
+        &__title{
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        &__content{
+            text-align: center;
+            width: 246px;
+            margin: 0 auto;
+            color: variables.$Grayish-Blue;
+        }
+    }
+}
+@mixin section-desktop($reverse:row){
+    @media(min-width: 1440px){
+        flex-direction: row;
+        justify-content: space-around;
+        flex-direction: $reverse;
+        height: 800px;
+        .image-container{
+           width: 527px;
+        }
+        // .image-container__ilustration{
+            
+        // }
+        .description{                                  
+            &__title{
+                font-size: 2.3em;
+                text-align: left;
+            }
+            &__content{
+                text-align: left;
+                font-size: 1em;
+                width: 495px;
+            }
+        }
+    }
+}
+@mixin footer-contact{
+    margin-bottom: 30px;
+    text-align: justify;
+        img{
+            margin-right: 10px;
+        }
+        a{
+            text-decoration: none;
+            color: variables.$Very-Pale-Cyan;
+        }
+}
+
+
+
+ 
